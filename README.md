@@ -1,4 +1,4 @@
-# openHASP Mushroom-like cards
+# openHASP HomeKit cards
 
 Here is my second configuration for openHASP. It uses a 320x480 TFT lcf from a Wirelass Tag module (wt32-sc01).
 All of the look/feel inspired by Apple HomeKit
