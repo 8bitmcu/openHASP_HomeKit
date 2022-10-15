@@ -1,0 +1,15 @@
+openhasp:
+  plate02:
+    objects:
+      - obj: "p0b10" # home button
+        properties:
+          "text_color": '{{ "#ff9e00" if is_state("number.plate02_page_number", "1") else "#FFFFFF" }}'
+      - obj: "p0b11" # bedroom button
+        properties:
+          "text_color": '{{ "#ff9e00" if is_state("number.plate02_page_number", "2") else "#FFFFFF" }}'
+      - obj: "p0b12" # living room button
+        properties:
+          "text_color": '{{ "#ff9e00" if is_state("number.plate02_page_number", "3") else "#FFFFFF" }}'
+      - obj: "p0b13" # kitchen button
+        properties:
+          "text_color": '{{ "#ff9e00" if is_state("number.plate02_page_number", "4") else "#FFFFFF" }}'
