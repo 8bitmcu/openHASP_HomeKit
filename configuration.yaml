@@ -1,7 +1,12 @@
 openhasp:
   plate02:
     objects:
-      - obj: "p0b10" # home button
+
+      # All Pages
+      - obj: "p0b1" # clock
+        properties:
+          "text": '{{ as_timestamp(now())|timestamp_custom("%I:%M %p") }}'
+      - obj: "p0b10" # house button
         properties:
           "text_color": '{{ "#ff9e00" if is_state("number.plate02_page_number", "1") else "#FFFFFF" }}'
       - obj: "p0b11" # bedroom button
@@ -13,3 +18,313 @@ openhasp:
       - obj: "p0b13" # kitchen button
         properties:
           "text_color": '{{ "#ff9e00" if is_state("number.plate02_page_number", "4") else "#FFFFFF" }}'
+
+
+
+      # Page 1: Vincent's Home
+      - obj: "p1b11" # Temperature
+        properties:
+          "text": '{{ states("sensor.inside_temp") | round(0) }}°C'
+      - obj: "p1b21" # Humidity
+        properties:
+          "text": '{{ states("sensor.inside_humidity") | round(0) }}%'
+      - obj: "p1b31" # Lights (button state)
+        properties:
+          "text_color": "{{ '#ff9e00' if (expand('light.all_lights_group') | selectattr('state','eq','on') | list | count() > 0) else '#FFF' }}"
+          "bg_opa": "{{ '255' if (expand('light.all_lights_group') | selectattr('state','eq','on') | list | count() > 0) else '0' }}"
+      - obj: "p1b32" # Lights (count on)
+        properties:
+          "text": "{{ expand('light.all_lights_group') | selectattr('state','eq','on') | list | count() }} on"
+      - obj: "p1b41" # Fans (button state)
+        properties:
+          "text_color": "{{ '#4caf50' if (expand('switch.fans') | selectattr('state','eq','on') | list | count() > 0) else '#FFF' }}"
+          "bg_opa": "{{ '255' if (expand('switch.fans') | selectattr('state','eq','on') | list | count() > 0) else '0' }}"
+      - obj: "p1b42" # Fans (count on)
+        properties:
+          "text": "{{ expand('switch.fans') | selectattr('state','eq','on') | list | count() }} on"
+      - obj: "p1b61" # Rock Playlist
+        event:
+          "down":
+            - service: scene.turn_on
+              target:
+                entity_id: scene.rock_playlist
+      - obj: "p1b71" # Downstairs Bright
+        event:
+          "down":
+            - service: scene.turn_on
+              target:
+                entity_id: scene.downstairs_bright
+      - obj: "p1b81" # Morning Routine
+        event:
+          "down":
+            - service: scene.turn_on
+              target:
+                entity_id: scene.morning_routine
+      - obj: "p1b91" # Bedtime Routine
+        event:
+          "down":
+            - service: scene.turn_on
+              target:
+                entity_id: scene.bedtime_routine
+      - obj: "p1b101" # Meditation
+        event:
+          "down":
+            - service: scene.turn_on
+              target:
+                entity_id: scene.meditation
+      - obj: "p1b111" # Movie Time
+        event:
+          "down":
+            - service: scene.turn_on
+              target:
+                entity_id: scene.movie_time
+
+
+
+      # Page 2: Bedroom
+      - obj: "p2b11" # Temperature
+        properties:
+          "text": '{{ states("sensor.usbsensor_05_dht11_temperature") | round(0) }}°C'
+      - obj: "p2b21" # Humidity
+        properties:
+          "text": '{{ states("sensor.usbsensor_05_dht11_humidity") | round(0) }}%'
+      - obj: "p2b31" # Presence
+        properties:
+          "text_color": '{{ "#7b3cb5" if is_state("binary_sensor.bedroom_presence", "on") else "#FFF" }}'
+          "bg_opa": '{{ "255" if is_state("binary_sensor.bedroom_presence", "on") else "0" }}'
+      - obj: "p2b41" # Door
+        properties:
+          "text_color": '{{ "#7b3cb5" if is_state("binary_sensor.rf433reed_01", "on") else "#FFF" }}'
+          "bg_opa": '{{ "255" if is_state("binary_sensor.rf433reed_01", "on") else "0" }}'
+          "text": '{{ "\uE81C" if is_state("binary_sensor.rf433reed_01", "on") else "\uE81B" }}'
+
+      - obj: "p2b61" # Ceiling Lamp on/off button
+        properties:
+          "bg_color": '{{ "#FFF" if is_state("light.ceiling_light_group", "on") else "#000" }}'
+          "bg_opa": '{{ "255" if is_state("light.ceiling_light_group", "on") else "128" }}'
+        event:
+          "down":
+            - service: homeassistant.toggle
+              target:
+                entity_id: light.ceiling_light_group
+      - obj: "p2b62" # Ceiling Lamp icon
+        properties:
+          "text_color": '{{ "#fb9b06" if is_state("light.ceiling_light_group", "on") else "#FFF" }}'
+          "opacity": '{{ "255" if is_state("light.ceiling_light_group", "on") else "128" }}'
+      - obj: "p2b63" # Ceiling Lamp primary label
+        properties:
+          "text_color": '{{ "#000" if is_state("light.ceiling_light_group", "on") else "#FFF" }}'
+          "opacity": '{{ "255" if is_state("light.ceiling_light_group", "on") else "128" }}'
+      - obj: "p2b64" # Ceiling Lamp secondary label
+        properties:
+          "text": '{{ "On" if is_state("light.ceiling_light_group", "on") else "Off" }}'
+          "text_color": '{{ "#000" if is_state("light.ceiling_light_group", "on") else "#FFF" }}'
+
+      - obj: "p2b71" # Bedside Lamp on/off button
+        properties:
+          "bg_color": '{{ "#FFF" if is_state("light.tasmota_3", "on") else "#000" }}'
+          "bg_opa": '{{ "255" if is_state("light.tasmota_3", "on") else "128" }}'
+        event:
+          "down":
+            - service: homeassistant.toggle
+              target:
+                entity_id: light.tasmota_3
+      - obj: "p2b72" # Beside Lamp icon
+        properties:
+          "text_color": '{{ "#fb9b06" if is_state("light.tasmota_3", "on") else "#FFF" }}'
+          "opacity": '{{ "255" if is_state("light.tasmota_3", "on") else "128" }}'
+      - obj: "p2b73" # Beside Lamp primary label
+        properties:
+          "text_color": '{{ "#000" if is_state("light.tasmota_3", "on") else "#FFF" }}'
+          "opacity": '{{ "255" if is_state("light.tasmota_3", "on") else "128" }}'
+      - obj: "p2b74" # Beside Lamp secondary label
+        properties:
+          "text": '{{ "On" if is_state("light.tasmota_3", "on") else "Off" }}'
+          "text_color": '{{ "#000" if is_state("light.tasmota_3", "on") else "#FFF" }}'
+
+      - obj: "p2b81" # Chromatic Neopixel on/off button
+        properties:
+          "bg_color": '{{ "#FFF" if is_state("light.wled_master", "on") else "#000" }}'
+          "bg_opa": '{{ "255" if is_state("light.wled_master", "on") else "128" }}'
+        event:
+          "down":
+            - service: homeassistant.toggle
+              target:
+                entity_id: light.wled_master
+      - obj: "p2b82" # Chromatic Neopixel icon
+        properties:
+          "text_color": '{{ "#fb9b06" if is_state("light.wled_master", "on") else "#FFF" }}'
+          "opacity": '{{ "255" if is_state("light.wled_master", "on") else "128" }}'
+      - obj: "p2b83" # Chromatic Neopixel primary label
+        properties:
+          "text_color": '{{ "#000" if is_state("light.wled_master", "on") else "#FFF" }}'
+          "opacity": '{{ "255" if is_state("light.wled_master", "on") else "128" }}'
+      - obj: "p2b84" # Chromatic Neopixel secondary label
+        properties:
+          "text": '{{ "On" if is_state("light.wled_master", "on") else "Off" }}'
+          "text_color": '{{ "#000" if is_state("light.wled_master", "on") else "#FFF" }}'
+
+      - obj: "p2b91" # Window Fan on/off button
+        properties:
+          "bg_color": '{{ "#FFF" if is_state("switch.s31_02", "on") else "#000" }}'
+          "bg_opa": '{{ "255" if is_state("switch.s31_02", "on") else "128" }}'
+        event:
+          "down":
+            - service: homeassistant.toggle
+              target:
+                entity_id: switch.s31_02
+      - obj: "p2b92" # Window Fan icon
+        properties:
+          "text_color": '{{ "#4caf50" if is_state("switch.s31_02", "on") else "#FFF" }}'
+          "opacity": '{{ "255" if is_state("switch.s31_02", "on") else "128" }}'
+      - obj: "p2b93" # Window Fan primary label
+        properties:
+          "text_color": '{{ "#000" if is_state("switch.s31_02", "on") else "#FFF" }}'
+          "opacity": '{{ "255" if is_state("switch.s31_02", "on") else "128" }}'
+      - obj: "p2b94" # Window Fan secondary label
+        properties:
+          "text": '{{ "On" if is_state("switch.s31_02", "on") else "Off" }}'
+          "text_color": '{{ "#000" if is_state("switch.s31_02", "on") else "#FFF" }}'
+
+      - obj: "p2b101" # A/C Fan on/off button
+        properties:
+          "bg_color": '{{ "#FFF" if is_state("switch.s31_03", "on") else "#000" }}'
+          "bg_opa": '{{ "255" if is_state("switch.s31_03", "on") else "128" }}'
+        event:
+          "down":
+            - service: homeassistant.toggle
+              target:
+                entity_id: switch.s31_03
+      - obj: "p2b102" # A/C Fan icon
+        properties:
+          "text_color": '{{ "#4caf50" if is_state("switch.s31_03", "on") else "#FFF" }}'
+          "opacity": '{{ "255" if is_state("switch.s31_03", "on") else "128" }}'
+      - obj: "p2b103" # A/C Fan primary label
+        properties:
+          "text_color": '{{ "#000" if is_state("switch.s31_03", "on") else "#FFF" }}'
+          "opacity": '{{ "255" if is_state("switch.s31_03", "on") else "128" }}'
+      - obj: "p2b104" # A/C Fan secondary label
+        properties:
+          "text": '{{ "On" if is_state("switch.s31_03", "on") else "Off" }}'
+          "text_color": '{{ "#000" if is_state("switch.s31_03", "on") else "#FFF" }}'
+
+      - obj: "p2b111" # Television on/off button
+        properties:
+          "bg_color": '{{ "#FFF" if is_state("media_player.bedroom_tv", "on") else "#000" }}'
+          "bg_opa": '{{ "255" if is_state("media_player.bedroom_tv", "on") else "128" }}'
+        event:
+          "down":
+            - service: homeassistant.toggle
+              target:
+                entity_id: media_player.bedroom_tv
+      - obj: "p2b112" # Television icon
+        properties:
+          "text_color": '{{ "#2196f3" if is_state("media_player.bedroom_tv", "on") else "#FFF" }}'
+          "opacity": '{{ "255" if is_state("media_player.bedroom_tv", "on") else "128" }}'
+      - obj: "p2b113" # Television primary label
+        properties:
+          "text_color": '{{ "#000" if is_state("media_player.bedroom_tv", "on") else "#FFF" }}'
+          "opacity": '{{ "255" if is_state("media_player.bedroom_tv", "on") else "128" }}'
+      - obj: "p2b114" # Television secondary label
+        properties:
+          "text": '{{ "On" if is_state("media_player.bedroom_tv", "on") else "Off" }}'
+          "text_color": '{{ "#000" if is_state("media_player.bedroom_tv", "on") else "#FFF" }}'
+
+
+
+      # Page 3: Living Room
+      - obj: "p3b11" # Temperature
+        properties:
+          "text": '{{ states("sensor.tasmota_dht11_temperature") | round(0) }}°C'
+      - obj: "p3b21" # Humidity
+        properties:
+          "text": '{{ states("sensor.tasmota_dht11_humidity") | round(0) }}%'
+      - obj: "p3b31" # Presence
+        properties:
+          "text_color": '{{ "#7b3cb5" if is_state("binary_sensor.livingroom_presence", "on") else "#FFF" }}'
+          "bg_opa": '{{ "255" if is_state("binary_sensor.livingroom_presence", "on") else "0" }}'
+
+      - obj: "p3b61" # Television on/off button
+        properties:
+          "bg_color": '{{ "#FFF" if is_state("media_player.lg_webos_tv_uj6300", "on") else "#000" }}'
+          "bg_opa": '{{ "255" if is_state("media_player.lg_webos_tv_uj6300", "on") else "128" }}'
+        event:
+          "down":
+            - service: homeassistant.toggle
+              target:
+                entity_id: media_player.lg_webos_tv_uj6300
+      - obj: "p3b62" # Television icon
+        properties:
+          "text_color": '{{ "#2196f3" if is_state("media_player.lg_webos_tv_uj6300", "on") else "#FFF" }}'
+          "opacity": '{{ "255" if is_state("media_player.lg_webos_tv_uj6300", "on") else "128" }}'
+      - obj: "p3b63" # Television primary label
+        properties:
+          "text_color": '{{ "#000" if is_state("media_player.lg_webos_tv_uj6300", "on") else "#FFF" }}'
+          "opacity": '{{ "255" if is_state("media_player.lg_webos_tv_uj6300", "on") else "128" }}'
+      - obj: "p3b64" # Television secondary label
+        properties:
+          "text": '{{ "On" if is_state("media_player.lg_webos_tv_uj6300", "on") else "Off" }}'
+          "text_color": '{{ "#000" if is_state("media_player.lg_webos_tv_uj6300", "on") else "#FFF" }}'
+
+
+
+      # Page 4: Office
+      - obj: "p4b11" # Temperature
+        properties:
+          "text": '{{ states("sensor.usbsensor_01_dht11_temperature") | round(0) }}°C'
+      - obj: "p4b21" # Humidity
+        properties:
+          "text": '{{ states("sensor.usbsensor_01_dht11_humidity") | round(0) }}%'
+      - obj: "p4b31" # Presence
+        properties:
+          "text_color": '{{ "#7b3cb5" if is_state("binary_sensor.office_presence", "on") else "#FFF" }}'
+          "bg_opa": '{{ "255" if is_state("binary_sensor.office_presence", "on") else "0" }}'
+      - obj: "p4b41" # Door
+        properties:
+          "text_color": '{{ "#7b3cb5" if is_state("binary_sensor.rf433reed_03", "on") else "#FFF" }}'
+          "bg_opa": '{{ "255" if is_state("binary_sensor.rf433reed_03", "on") else "0" }}'
+          "text": '{{ "\uE81C" if is_state("binary_sensor.rf433reed_03", "on") else "\uE81B" }}'
+
+      - obj: "p4b61" # Ceiling Lamp on/off button
+        properties:
+          "bg_color": '{{ "#FFF" if is_state("light.ledbulb_06", "on") else "#000" }}'
+          "bg_opa": '{{ "255" if is_state("light.ledbulb_06", "on") else "128" }}'
+        event:
+          "down":
+            - service: homeassistant.toggle
+              target:
+                entity_id: light.ledbulb_06
+      - obj: "p4b62" # Ceiling Lamp icon
+        properties:
+          "text_color": '{{ "#fb9b06" if is_state("light.ledbulb_06", "on") else "#FFF" }}'
+          "opacity": '{{ "255" if is_state("light.ledbulb_06", "on") else "128" }}'
+      - obj: "p4b63" # Ceiling Lamp primary label
+        properties:
+          "text_color": '{{ "#000" if is_state("light.ledbulb_06", "on") else "#FFF" }}'
+          "opacity": '{{ "255" if is_state("light.ledbulb_06", "on") else "128" }}'
+      - obj: "p4b64" # Ceiling Lamp secondary label
+        properties:
+          "text": '{{ "On" if is_state("light.ledbulb_06", "on") else "Off" }}'
+          "text_color": '{{ "#000" if is_state("light.ledbulb_06", "on") else "#FFF" }}'
+
+      - obj: "p4b71" # 3D printer card
+        properties:
+          "bg_color": '{{ "#FFF" if is_state("binary_sensor.octoprint_printing", "on") else "#000" }}'
+          "bg_opa": '{{ "255" if is_state("binary_sensor.octoprint_printing", "on") else "128" }}'
+      - obj: "p4b72" # 3D printer icon
+        properties:
+          "text_color": '{{ "#fb9b06" if is_state("binary_sensor.octoprint_printing", "on") else "#FFF" }}'
+          "opacity": '{{ "255" if is_state("binary_sensor.octoprint_printing", "on") else "128" }}'
+      - obj: "p4b73" # 3D printer primary label
+        properties:
+          "text_color": '{{ "#000" if is_state("binary_sensor.octoprint_printing", "on") else "#FFF" }}'
+          "opacity": '{{ "255" if is_state("binary_sensor.octoprint_printing", "on") else "128" }}'
+      - obj: "p4b74" # 3D printer secondary label
+        properties:
+          "text": >-
+            {%if states('binary_sensor.octoprint_printing') == 'on' %}
+              {{ states('sensor.octoprint_job_percentage') | round() }}%
+            {%else%}
+              Off
+            {%endif%}
+          "text_color": '{{ "#000" if is_state("binary_sensor.octoprint_printing", "on") else "#FFF" }}'
