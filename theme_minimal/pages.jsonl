@@ -1,0 +1,24 @@
+{"page":1,"id":0,"bg_color":"#462c5c", "bg_grad_color": "#3b708f", "bg_grad_dir": 1}
+{"page":2,"id":0,"bg_color":"#462c5c", "bg_grad_color": "#3b708f", "bg_grad_dir": 1}
+{"page":3,"id":0,"bg_color":"#462c5c", "bg_grad_color": "#3b708f", "bg_grad_dir": 1}
+
+{"page":0,"id":1,"obj":"label","x":0,"y":10,"h":30,"w":320,"text":"2022/10/12  3:42 PM","align":"center", "text_color":"#FFF", "text_font": 24}
+
+{"page":1,"id":1,"obj":"btn","x":10,"y":050,"w":300,"h":85,"radius":10,"border_side":0,"bg_color":"#000","bg_opa": 128,"bg_color01":"#FFF","value_color":"#FFF","value_color01":"#000","value_opa":128,"value_font":32,"click":true,"toggle":true,"value_str":"\uE502 Television"}
+{"page":1,"id":2,"obj":"btn","x":10,"y":145,"w":300,"h":85,"radius":10,"border_side":0,"bg_color":"#000","bg_opa": 128,"bg_color01":"#FFF","value_color":"#FFF","value_color01":"#000","value_opa":128,"value_font":32,"click":true,"toggle":true,"value_str":"\uE769 Ceiling Light"}
+{"page":1,"id":3,"obj":"btn","x":10,"y":240,"w":300,"h":85,"radius":10,"border_side":0,"bg_color":"#000","bg_opa": 128,"bg_color01":"#FFF","value_color":"#FFF","value_color01":"#000","value_opa":128,"value_font":32,"click":true,"toggle":true,"value_str":"\uE75A Rock Playlist"}
+{"page":1,"id":4,"obj":"btn","x":10,"y":335,"w":300,"h":85,"radius":10,"border_side":0,"bg_color":"#000","bg_opa": 128,"bg_color01":"#FFF","value_color":"#FFF","value_color01":"#000","value_opa":128,"value_font":32,"click":true,"toggle":true,"value_str":"\uE210 Window Fan"}
+
+
+
+{"page":2,"id":1,"obj":"btn","x":10,"y":050,"w":150,"h":85,"radius":10,"border_side":0,"bg_color":"#000","bg_opa": 128,"bg_color01":"#FFF","value_color":"#FFF","value_color01":"#000","value_opa":128,"value_font":24,"click":false,"toggle":false,"value_str":"\uE502 Temperature"}
+
+
+
+
+
+{"page":0,"id":10,"obj":"btn","action":"prev","x":0,"y":420,"w":107,"h":60,"text_color":"#FFF","bg_opa":0,"border_side":0,"text_font":32,"text":"\uE141"}
+{"page":0,"id":11,"obj":"btn","action":"back","x":107,"y":420,"w":107,"h":60,"text_color":"#FFF","bg_opa":0,"border_side":0,"text_font":32,"text":"\uE2DC"}
+{"page":0,"id":12,"obj":"btn","action":"next","x":214,"y":420,"w":107,"h":60,"text_color":"#FFF","bg_opa":0,"border_side":0,"text_font":32,"text":"\uE142"}
+{"page":1,"id":0,"prev":3}
+{"page":3,"id":0,"next":1}
