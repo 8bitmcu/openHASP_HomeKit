@@ -4,6 +4,11 @@
 {"page":3,"id":0,"bg_color":"#da50f4", "bg_grad_color": "#4942ff", "bg_grad_dir": 1}
 {"page":4,"id":0,"bg_color":"#07ceff", "bg_grad_color": "#ff4693", "bg_grad_dir": 1}
 
+{"page":1,"id":1,"obj":"img","src":"L:/hk-House.png","auto_size":0,"w":320}
+{"page":2,"id":1,"obj":"img","src":"L:/hk-Bedroom.png","auto_size":0,"w":320}
+{"page":3,"id":1,"obj":"img","src":"L:/hk-Living_Room.png","auto_size":0,"w":320}
+{"page":4,"id":1,"obj":"img","src":"L:/hk-Office_1.png","auto_size":0,"w":320}
+
 {"page":0,"id":1,"obj":"label","x":25,"y":10,"h":30,"w":320,"text":"7:42 PM", "text_color":"#FFF","text_font": 16}
 
 
