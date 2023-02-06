@@ -7,8 +7,8 @@ Single tap toggles the device on/off. Holding the icon displays an appropriate p
 ## Installation
 
 1. [Set up openHasp](https://www.openhasp.com/0.6.3/getting-started/) on your device. Select material light as your theme.
-2. Copy the content of `pages.jsonl` to your device. Upload the required background images.
-3. Copy `openhasp_homekit.yaml` to your homeassistant folder. Edit and replace all instances of `plate04` to the name of your openhasp device
+2. Copy the content of `pages.jsonl` to your device. Edit the devices so they match yours. Upload the required background images.
+3. Copy `openhasp_homekit.yaml` to your homeassistant folder. Edit and replace all instances of `plate04` to the name of your openhasp device. Edit the device references so they match yours.
 4. Edit your `configuration.yaml` and add the following:
 
 ```
