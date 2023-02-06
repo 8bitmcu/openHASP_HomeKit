@@ -40,27 +40,20 @@ When defining your own background/gradients, you will need to use a color picker
 ### page 3 and page 4
 ![alt text](assets/page3_bg.jpg)  ![alt text](assets/page4_bg.jpg)
 
-
-### Light popup card
+### Light popup card / WLED popup card
 The light popup card can be used to change the Brightness, Temperature or Color of a light source that supports it.
-![alt text](assets/light_popup.png) 
+The WLED popup shows controls for a WLED based light source. Brightness, Intensity, Speed and Preset can be adjusted  
+![alt text](assets/light_popup.png)   ![alt text](assets/wled_popup.png) 
 
-### WLED popup card
-Shows controls for a WLED based light source. Brightness, Intensity, Speed and Preset can be adjusted  
-![alt text](assets/wled_popup.png) 
-
-### Timer popup card
-Can be used to delay the shutdown of an appliance                
-![alt text](assets/timer_popup.png) 
-
-### Thermostat popup card
-![alt text](assets/thermostat_popup.png) 
-
-### 3D Printer popup card
-Shows the current state, print percentage and estimated completed time of a running print job
-![alt text](assets/3dprinter_popup.png) 
+### Timer popup card / Thermostat popup card     
+Can be used to delay the shutdown of an appliance                           
+![alt text](assets/timer_popup.png)   ![alt text](assets/thermostat_popup.png) 
 
 ### Binary popup
-Shows the current state of a binary device and the last time it was changed.
+Shows the current state of a binary device and the last time it was changed.                      
 ![alt text](assets/binary_popup.png) ![alt text](assets/binary_popup2.png) 
+
+### 3D Printer popup card
+Shows the current state, print percentage and estimated completed time of a running print job                   
+![alt text](assets/3dprinter_popup.png) 
 
