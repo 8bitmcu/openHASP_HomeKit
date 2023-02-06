@@ -46,11 +46,11 @@ The light popup card can be used to change the Brightness, Temperature or Color 
 ![alt text](assets/light_popup.png) 
 
 ### WLED popup card
-Shows controls for a WLED based light source. Brightness, Intensity, Speed and Preset can be adjusted
+Shows controls for a WLED based light source. Brightness, Intensity, Speed and Preset can be adjusted  
 ![alt text](assets/wled_popup.png) 
 
 ### Timer popup card
-Can be used to delay the shutdown of an appliance
+Can be used to delay the shutdown of an appliance                
 ![alt text](assets/timer_popup.png) 
 
 ### Thermostat popup card
