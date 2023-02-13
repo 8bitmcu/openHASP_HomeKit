@@ -22,6 +22,8 @@ Restart your device then restart home assistant. You should be ready to give thi
 
 ## Configuration Notes
 
+This theme is rather difficult to set up. It isn't exactly a finished product either! You have been warned.
+
 All of the popup cards (except for the 3D Printer one) are defined as 'scripts'. This is so we can reuse them multiple time without having to copy/paste the jsonl syntax over.
 
 You can choose to use either gradient colors or images as your background. It should be noted that pages with gradients tends to load much faster than pages with backgrounds.
