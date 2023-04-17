@@ -1,0 +1,14 @@
+
+{"page":1,"id":1,"obj":"img","src":"L:/hk-House.png","auto_size":0,"w":800}
+{"page":2,"id":1,"obj":"img","src":"L:/hk-Bedroom.png","auto_size":0,"w":800}
+{"page":3,"id":1,"obj":"img","src":"L:/hk-Living_Room.png","auto_size":0,"w":800}
+{"page":4,"id":1,"obj":"img","src":"L:/hk-Office_1.png","auto_size":0,"w":800}
+
+
+
+{"page":0,"id":10,"obj":"btn","action":"p1","x":0,"y":435,"w":80,"h":45,"bg_color":"#2a283d","text":"\uE2DC","text_color":"#ff9e00","radius":0,"border_side":0,"text_font":32}
+{"page":0,"id":11,"obj":"btn","action":"p2","x":80,"y":435,"w":80,"h":45,"bg_color":"#2a283d","text":"\uE2E3","text_color":"#FFFFFF","radius":0,"border_side":0,"text_font":32}
+{"page":0,"id":12,"obj":"btn","action":"p3","x":160,"y":435,"w":80,"h":45,"bg_color":"#2a283d","text":"\uE4B9","text_color":"#FFFFFF","radius":0,"border_side":0,"text_font":32}
+{"page":0,"id":13,"obj":"btn","action":"p4","x":240,"y":435,"w":80,"h":45,"bg_color":"#2a283d","text":"\uE95F","text_color":"#FFFFFF","radius":0,"border_side":0,"text_font":32}
+
+
